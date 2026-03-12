@@ -7,7 +7,7 @@ export default function Currency() {
   const [data, setData] = useState();
   useEffect(() => {
     fetch(
-      `https://v6.exchangerate-api.com/v6/9e2b0f9b3c4e7e043de6cbb6/latest/${fromCurrency}`,
+      `https://v6.exchangerate-api.com/v6/${import.meta.env.VITE_API_KEY}/latest/${fromCurrency}`,
     )
       .then((res) => res.json())
       .then((data) => setData(data))
