@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-
+import "./Currency.css";
 export default function Currency() {
   const [amount, setAmount] = useState("");
   const [fromCurrency, setFromCurrency] = useState("USD");
@@ -20,72 +20,106 @@ export default function Currency() {
   }, [amount, toCurrency, data]);
 
   return (
-    <section
+    <div
       style={{
         display: "flex",
-        flexDirection: "column",
-        gap: "20px",
-        justifyItems: "center",
+        justifyContent: "center",
         alignItems: "center",
-        paddingTop: "64px",
+        height: "100vh",
       }}
     >
-      <input
-        type="number"
-        value={amount}
-        onChange={(e) => setAmount(e.target.value)}
+      <section
         style={{
-          width: "50%",
-          outline: "none",
-          backgroundColor: "white",
-          padding: "10px",
-          borderRadius: "5px",
-          fontSize: "16px",
-        }}
-      />
-      <select
-        value={fromCurrency}
-        onChange={(e) => setFromCurrency(e.target.value)}
-        style={{
-          width: "50%",
-          padding: "6px",
-          outline: "none",
-          borderRadius: "5px",
-          fontSize: "16px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "15px",
+          justifyContent: "center",
+          alignItems: "center",
+          border: "none",
+          background: "white",
+          borderRadius: "10px",
         }}
       >
-        <option value="USD">USD</option>
-        <option value="EUR">EUR</option>
-        <option value="GBP">GBP</option>
-        <option value="JPY">JPY</option>
-      </select>
-      <select
-        value={toCurrency}
-        onChange={(e) => setToCurrency(e.target.value)}
-        style={{
-          width: "50%",
-          padding: "6px",
-          outline: "none",
-          borderRadius: "5px",
-          fontSize: "16px",
-        }}
-      >
-        <option value="USD">USD</option>
-        <option value="EUR">EUR</option>
-        <option value="GBP">GBP</option>
-        <option value="JPY">JPY</option>
-      </select>
-      <p
-        style={{
-          textAlign: "left",
-          fontSize: "20px",
-          fontWeight: "500",
-          color: "white",
-        }}
-      >
-        Converted Amount: {currenyCalculator.toFixed(2)}
-        {toCurrency}
-      </p>
-    </section>
+        <h1 style={{ fontFamily: "Montserrat Alternates", color: "#16303bff" }}>
+          Currency Converter
+        </h1>
+        <p
+          style={{
+            fontFamily: "Nunito",
+            color: "#16303bff",
+            textAlign: "center",
+            fontSize: "18px",
+          }}
+        >
+          Would you like to make a conversion?
+        </p>
+        <input
+          type="number"
+          value={amount}
+          placeholder="Please input amount to convert"
+          onChange={(e) => setAmount(e.target.value)}
+          style={{
+            width: "80%",
+            outline: "none",
+            border: "1px solid #a9c7d4ff",
+            backgroundColor: "white",
+            padding: "10px",
+            borderRadius: "5px",
+            fontSize: "16px",
+            color: "#16303bff",
+          }}
+        />
+        <select
+          value={fromCurrency}
+          onChange={(e) => setFromCurrency(e.target.value)}
+          style={{
+            width: "80%",
+            padding: "10px",
+            outline: "none",
+            border: "1px solid #a9c7d4ff",
+            borderRadius: "5px",
+            fontSize: "16px",
+            color: "#16303bff",
+          }}
+        >
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+          <option value="GBP">GBP</option>
+          <option value="JPY">JPY</option>
+        </select>
+        <select
+          value={toCurrency}
+          onChange={(e) => setToCurrency(e.target.value)}
+          style={{
+            width: "80%",
+            padding: "10px",
+            outline: "none",
+            border: "1px solid #a9c7d4ff",
+            borderRadius: "5px",
+            fontSize: "16px",
+            color: "#16303bff",
+          }}
+        >
+          <option value="USD">USD</option>
+          <option value="EUR">EUR</option>
+          <option value="GBP">GBP</option>
+          <option value="JPY">JPY</option>
+        </select>
+        <p
+          style={{
+            textAlign: "left",
+            fontWeight: "500",
+            color: "#2d4753ff",
+
+            fontFamily: "Nunito",
+            borderRadius: "6px",
+            background: "#ebf3f3ff",
+          }}
+        >
+          Converted Amount: {currenyCalculator.toFixed(2)}
+          {toCurrency}
+        </p>
+      </section>
+    </div>
   );
 }

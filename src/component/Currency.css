@@ -1,0 +1,29 @@
+section{
+    width: 30%;
+    margin:  auto  auto;
+     padding: 70px 20px;
+}
+@media(max-width:768px){
+    section{
+        width:80%;
+        padding: 45px 20px;
+    }
+}
+h1{
+    font-size: 28px;
+}
+@media(max-width:768px){
+    h1{
+        font-size: 20px;
+    }
+}
+p{
+     padding: 5px 33px;
+     font-size: 20px;
+}
+@media(max-width:768px){
+    p{
+        padding: 5px 8.5px;
+        font-size: 16px;
+    }
+}
