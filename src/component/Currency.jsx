@@ -2,8 +2,8 @@ import { useEffect, useMemo, useState } from "react";
 import "./Currency.css";
 export default function Currency() {
   const [amount, setAmount] = useState("");
-  const [fromCurrency, setFromCurrency] = useState("USD");
-  const [toCurrency, setToCurrency] = useState("EUR");
+  const [fromCurrency, setFromCurrency] = useState("");
+  const [toCurrency, setToCurrency] = useState("");
   const [data, setData] = useState();
   useEffect(() => {
     fetch(
@@ -82,6 +82,9 @@ export default function Currency() {
             color: "#16303bff",
           }}
         >
+          <option value="" disabled>
+            Select currency to convert from
+          </option>
           <option value="USD">USD</option>
           <option value="EUR">EUR</option>
           <option value="GBP">GBP</option>
@@ -100,6 +103,9 @@ export default function Currency() {
             color: "#16303bff",
           }}
         >
+          <option value="" disabled>
+            Select currency to convert to
+          </option>
           <option value="USD">USD</option>
           <option value="EUR">EUR</option>
           <option value="GBP">GBP</option>
@@ -116,7 +122,7 @@ export default function Currency() {
             background: "#ebf3f3ff",
           }}
         >
-          Converted Amount: {currenyCalculator.toFixed(2)}
+          Converted Amount: {Number(currenyCalculator).toLocaleString()}
           {toCurrency}
         </p>
       </section>
