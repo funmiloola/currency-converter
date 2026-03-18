@@ -5,6 +5,8 @@ export default function Currency() {
   const [fromCurrency, setFromCurrency] = useState("");
   const [toCurrency, setToCurrency] = useState("");
   const [data, setData] = useState();
+    const currencies = ["USD", "EUR", "GBP", "JPY"]
+    const filteredToCurrency = currencies.filter((currency => currency !== fromCurrency ))
   useEffect(() => {
     fetch(
       `https://v6.exchangerate-api.com/v6/${import.meta.env.VITE_API_KEY}/latest/${fromCurrency}`,
@@ -85,10 +87,9 @@ export default function Currency() {
           <option value="" disabled>
             Select currency to convert from
           </option>
-          <option value="USD">USD</option>
-          <option value="EUR">EUR</option>
-          <option value="GBP">GBP</option>
-          <option value="JPY">JPY</option>
+                  {currencies.map((currency) => (
+                      <option key={currency} value={currency}>{currency}</option>
+         ))}
         </select>
         <select
           value={toCurrency}
@@ -106,10 +107,9 @@ export default function Currency() {
           <option value="" disabled>
             Select currency to convert to
           </option>
-          <option value="USD">USD</option>
-          <option value="EUR">EUR</option>
-          <option value="GBP">GBP</option>
-          <option value="JPY">JPY</option>
+                  {filteredToCurrency.map((filteredCurrency) => (
+                      <option key={filteredCurrency} value={filteredCurrency}>{filteredCurrency}</option>
+         ))}
         </select>
         <p
           style={{
@@ -122,7 +122,7 @@ export default function Currency() {
             background: "#ebf3f3ff",
           }}
         >
-          Converted Amount: {Number(currenyCalculator).toLocaleString()}
+          Converted Amount: {toCurrency &&  Number(currenyCalculator).toLocaleString() || "0.00"}
           {toCurrency}
         </p>
       </section>
